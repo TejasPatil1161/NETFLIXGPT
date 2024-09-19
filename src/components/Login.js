@@ -8,7 +8,6 @@ import {
   doSignInWithGoogle,
   doProfileUpdate,
 } from "../utils/authenticate";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { auth } from "../utils/firebase";
 import { addUser } from "../store/userSlice";
@@ -45,7 +44,6 @@ const ErrorMessage = ({ message }) => {
 };
 
 const Login = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isSignIn, setIsSignIn] = useState(true);
   const [signingIn, setSigningIn] = useState(false);
@@ -112,13 +110,11 @@ const Login = () => {
               photoURL: photoURL,
             })
           );
-          navigate("/browse");
         } else {
           await doSignInWithEmailAndPassword(
             email?.current.value,
             password?.current.value
           );
-          navigate("/browse");
         }
       } catch (error) {
         console.log(error.message);
@@ -137,7 +133,6 @@ const Login = () => {
       setSigningIn(true);
       try {
         await doSignInWithGoogle();
-        navigate("/browse");
       } catch (err) {
         setSigningIn(false);
       }

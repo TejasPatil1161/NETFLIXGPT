@@ -1,21 +1,48 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NETFLIX_LOGO } from "../utils/constants";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { doSignout } from "../utils/authenticate";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { addUser, removeUser } from "../store/userSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
 
   const handleSignOut = async () => {
     try {
       await doSignout();
-      navigate("/");
     } catch (error) {
       console.log("An error occured while Signing out:", error);
     }
   };
+
+  // Required to be present for keeping track of auth. Act as a listener for the whole app.
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(
+          addUser({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL: photoURL,
+          })
+        );
+        navigate("/browse");
+      } else {
+        // User is signed out
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+  }, [dispatch, navigate]);
 
   return (
     <div className="w-full lg:px-12 md:px-8 px-4 py-6 bg-black md:bg-transparent flex justify-between">
