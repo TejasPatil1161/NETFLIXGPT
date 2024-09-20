@@ -141,12 +141,12 @@ const Login = () => {
 
   return (
     <div
-      className="min-h-screen relative flex flex-col justify-between"
+      className="md:min-h-screen relative flex flex-col justify-between"
       style={{ backgroundImage: `url(${LOGIN_BG_IMAGE})` }}
     >
-      <div className="relative flex flex-col min-h-screen w-full z-10 bg-black md:bg-transparent">
+      <div className="relative flex flex-col md:min-h-screen w-full z-10 bg-black md:bg-transparent">
         <Header />
-        <div className="flex w-full md:h-full justify-start md:justify-center items-start px-7">
+        <div className="flex w-full h-full min-h-screen justify-start md:justify-center items-start md:items-center px-7">
           <div
             id="form"
             className="text-white flex flex-col lg:w-1/3 w-full bg-black bg-opacity-75 md:p-14 rounded-md"

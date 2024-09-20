@@ -1,3 +1,4 @@
+import { USER_AVATAR } from "./constants";
 import { auth } from "./firebase";
 import {
   signInWithEmailAndPassword,
@@ -23,8 +24,7 @@ export const doSignout = async () => {
 export const doProfileUpdate = async (user) => {
   return updateProfile(auth.currentUser, {
     displayName: user,
-    photoURL:
-      "https://wallpapers.com/images/high/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.webp",
+    photoURL: USER_AVATAR,
   });
 };
 
