@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { LOGIN_BG_IMAGE } from "../utils/constants";
+import { BG_IMAGE } from "../utils/constants";
 import Header from "./Header";
 import { checkValidation } from "../utils/validate";
 import {
@@ -142,7 +142,7 @@ const Login = () => {
   return (
     <div
       className="md:min-h-screen relative flex flex-col justify-between"
-      style={{ backgroundImage: `url(${LOGIN_BG_IMAGE})` }}
+      style={{ backgroundImage: `url(${BG_IMAGE})` }}
     >
       <div className="relative flex flex-col md:min-h-screen w-full z-10 bg-black md:bg-transparent">
         <Header />

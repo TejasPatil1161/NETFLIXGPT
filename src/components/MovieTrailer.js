@@ -2,25 +2,26 @@ import React, { useEffect, useState } from "react";
 import VideoBackground from "./VideoBackground";
 import VideoContent from "./VideoContent";
 import { useDispatch, useSelector } from "react-redux";
-import { addMovieTrailer } from "../store/moviesSlice";
+import { addHeroMovieTrailerDetails } from "../store/moviesSlice";
 
 const MovieTrailer = () => {
-  const movies = useSelector((store) => store.movies?.nowPlayingMovies);
-  const [trailerMovie, setTrailerMovie] = useState(null);
   const dispatch = useDispatch();
+  const movies = useSelector((store) => store.movies?.["Now Playing"]);
+  const [trailerDetails, setTrailerDetails] = useState(null);
 
   useEffect(() => {
     if (movies && movies.length > 0) {
       const randomIndex = Math.floor(Math.random() * movies.length);
-      setTrailerMovie(movies[randomIndex]);
-      dispatch(addMovieTrailer(movies[randomIndex]));
+      setTrailerDetails(movies[randomIndex]);
     }
-  }, [movies, dispatch]);
+  }, [movies]);
 
-  if (!trailerMovie) return null;
+  if (!trailerDetails) return null;
+
+  dispatch(addHeroMovieTrailerDetails(trailerDetails));
 
   return (
-    <div className="w-full">
+    <div className="w-full bg-black">
       <VideoContent />
       <VideoBackground />
     </div>

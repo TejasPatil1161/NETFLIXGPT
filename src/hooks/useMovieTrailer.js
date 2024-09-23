@@ -1,10 +1,9 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { MOVIE_API_OPTIONS } from "../utils/constants";
-import { addPlayMovieTrailer } from "../store/moviesSlice";
-import { useDispatch } from "react-redux";
 
 const useMovieTrailer = (movieId) => {
-  const dispatch = useDispatch();
+  const [trailer, setTrailer] = useState(null);
+
   const getMovieClips = useCallback(async () => {
     try {
       const data = await fetch(
@@ -16,20 +15,21 @@ const useMovieTrailer = (movieId) => {
         (video) => video.type === "Trailer"
       );
       const randomIndex = Math.floor(Math.random() * dataClips.length);
-      const trailer =
+      const trailerDetails =
         dataClips.length !== 0 ? dataClips[randomIndex] : json.results[0];
-      dispatch(addPlayMovieTrailer(trailer));
-      console.log(trailer);
+      setTrailer(trailerDetails);
     } catch (error) {
       console.log("Error while fetching the Movie Clips:", error);
     }
-  }, [dispatch, movieId]);
+  }, [movieId]);
 
   useEffect(() => {
     if (movieId) {
       getMovieClips();
     }
   }, [getMovieClips, movieId]);
+
+  return trailer;
 };
 
 export default useMovieTrailer;

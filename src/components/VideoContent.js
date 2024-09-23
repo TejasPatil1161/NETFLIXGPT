@@ -49,15 +49,16 @@ const playIconSvg = () => {
 };
 
 const VideoContent = () => {
-  const movieTrailerDetails = useSelector(
-    (store) => store.movies?.movieTrailer
+  const trailerVideo = useSelector(
+    (store) => store?.movies?.heroMovieTrailer?.trailerDetails
   );
-  const { original_title, title, overview } = movieTrailerDetails;
+
+  const { Original_title, title, overview } = trailerVideo;
 
   return (
-    <div className="flex flex-col gap-1 p-16 pt-[23%] absolute text-white bg-gradient-to-r from-black aspect-video w-full">
+    <div className="flex flex-col gap-1 p-16 pt-[18%] absolute text-white bg-gradient-to-r from-black aspect-video w-full bg-opacity-75">
       <div className="text-5xl font-bold">
-        {original_title === title ? original_title : title}
+        {Original_title === title ? Original_title : title}
       </div>
       <p className="w-2/5 py-3 font-semibold">{overview}</p>
       <div className="flex gap-3">
