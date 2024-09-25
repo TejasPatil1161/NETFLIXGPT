@@ -5,14 +5,16 @@ import { BG_IMAGE } from "../utils/constants";
 
 const GPT = () => {
   return (
-    <div className="min-h-screen relative">
-      <div className="absolute inset-0 -z-20">
-        <img className="bg-cover" src={BG_IMAGE} alt="banner" />
-        <div className="absolute inset-0 bg-black opacity-45 min-h-screen h-full z-0"></div>
+    <>
+      <div className="min-h-screen relative flex flex-col">
+        <div className="fixed inset-0 -z-20">
+          <img className="bg-cover" src={BG_IMAGE} alt="banner" />
+        </div>
+        <GPTSearchBar />
+        <GPTMovieSuggestions />
       </div>
-      <GPTSearchBar />
-      <GPTMovieSuggestions />
-    </div>
+      <div className="fixed inset-0 bg-black opacity-45 min-h-screen h-full z-0"></div>
+    </>
   );
 };
 

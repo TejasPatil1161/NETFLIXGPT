@@ -286,7 +286,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <div className="absolute inset-0 bg-black opacity-45 min-h-screen h-full"></div>
+      <div className="fixed inset-0 bg-black opacity-45 min-h-screen h-full"></div>
     </div>
   );
 };

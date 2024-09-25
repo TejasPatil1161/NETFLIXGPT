@@ -28,12 +28,16 @@ const initialState = {
     trailerDetails: null,
     youtubeKeyDetails: null,
   },
+  error: true,
 };
 
 const moviesSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {
+    changeErrorState: (state, action) => {
+      state.error = action.payload;
+    },
     addMovies: (state, action) => {
       const { category, movies } = action.payload;
       state[category] = movies;
@@ -52,5 +56,6 @@ export const {
   addMovies,
   addHeroMovieTrailerDetails,
   addHeroMovieTrailerYoutubeKey,
+  changeErrorState,
 } = moviesSlice.actions;
 export default moviesSlice.reducer;

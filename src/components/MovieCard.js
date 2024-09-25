@@ -1,13 +1,18 @@
 import React from "react";
 import { MOVIE_IMAGE_PATH } from "../utils/constants";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, imageType = "backdrop" }) => {
+  const movieImage =
+    imageType === "poster" ? movie.poster_path : movie.backdrop_path;
+
   return (
     <div className="relative mx-1 group/MovieCard w-60">
       {/* Movie Image */}
       <img
-        className="rounded w-full object-cover"
-        src={MOVIE_IMAGE_PATH + movie.backdrop_path}
+        className={`rounded w-full object-cover ${
+          imageType === "poster" ? "h-96" : ""
+        }`}
+        src={MOVIE_IMAGE_PATH + movieImage}
         alt={movie.title}
       />
 

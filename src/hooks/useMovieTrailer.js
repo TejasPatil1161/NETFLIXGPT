@@ -1,9 +1,13 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import { MOVIE_API_OPTIONS } from "../utils/constants";
+import { useDispatch, useSelector } from "react-redux";
+import { addHeroMovieTrailerYoutubeKey } from "../store/moviesSlice";
 
 const useMovieTrailer = (movieId) => {
-  const [trailer, setTrailer] = useState(null);
-
+  const dispatch = useDispatch();
+  const youtubeKeyDetails = useSelector(
+    (store) => store?.movies?.heroMovieTrailer?.youtubeKeyDetails
+  );
   const getMovieClips = useCallback(async () => {
     try {
       const data = await fetch(
@@ -17,19 +21,17 @@ const useMovieTrailer = (movieId) => {
       const randomIndex = Math.floor(Math.random() * dataClips.length);
       const trailerDetails =
         dataClips.length !== 0 ? dataClips[randomIndex] : json.results[0];
-      setTrailer(trailerDetails);
+      dispatch(addHeroMovieTrailerYoutubeKey(trailerDetails));
     } catch (error) {
       console.log("Error while fetching the Movie Clips:", error);
     }
-  }, [movieId]);
+  }, [movieId, dispatch]);
 
   useEffect(() => {
     if (movieId) {
-      getMovieClips();
+      !youtubeKeyDetails && getMovieClips();
     }
-  }, [getMovieClips, movieId]);
-
-  return trailer;
+  }, [getMovieClips, movieId, youtubeKeyDetails]);
 };
 
 export default useMovieTrailer;

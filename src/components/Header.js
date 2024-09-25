@@ -6,7 +6,7 @@ import { doSignout } from "../utils/authenticate";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { addUser, removeUser } from "../store/userSlice";
-import { toggleGPTSearchView } from "../store/GPTSlice";
+import { removeGPTMovieResult, toggleGPTSearchView } from "../store/GPTSlice";
 import { changeLanguage } from "../store/configSlice";
 
 const Header = () => {
@@ -43,6 +43,8 @@ const Header = () => {
   const handleSignOut = async () => {
     try {
       await doSignout();
+      dispatch(toggleGPTSearchView());
+      dispatch(removeGPTMovieResult());
     } catch (error) {
       console.log("An error occurred while Signing out:", error);
     }
@@ -54,6 +56,7 @@ const Header = () => {
 
   const handleGPTSeachView = () => {
     dispatch(toggleGPTSearchView());
+    dispatch(removeGPTMovieResult());
   };
 
   const handleLanguageChange = (e) => {

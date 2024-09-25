@@ -10,77 +10,76 @@ import {
   MOVIE_API_TOP_RATED_MOVIES,
   MOVIE_API_UPCOMING_MOVIES,
 } from "../utils/constants";
-import { useDispatch, useSelector } from "react-redux";
-import { addMovies } from "../store/moviesSlice";
+import { useSelector } from "react-redux";
 import GPT from "./GPT";
 
 const Browse = () => {
-  const dispatch = useDispatch();
   const showGPTSearch = useSelector((store) => store.GPT.showGPTSearch);
+  const errorJio = useSelector((store) => store.movies.error);
 
-  const nowPlayingMovies = useMovies(MOVIE_API_NOW_PLAYING_MOVIES);
-  const popularMovies = useMovies(MOVIE_API_POPULAR_MOVIES);
-  const topRatedMovies = useMovies(MOVIE_API_TOP_RATED_MOVIES);
-  const upcomingMovies = useMovies(MOVIE_API_UPCOMING_MOVIES);
-  const Action = useMovies(`${MOVIE_API_GENRE}+&with_genres=${28}`);
-  const Adventure = useMovies(`${MOVIE_API_GENRE}+&with_genres=${12}`);
-  const Animation = useMovies(`${MOVIE_API_GENRE}+&with_genres=${16}`);
-  const Crime = useMovies(`${MOVIE_API_GENRE}+&with_genres=${80}`);
-  const Comedy = useMovies(`${MOVIE_API_GENRE}+&with_genres=${35}`);
-  const Documentary = useMovies(`${MOVIE_API_GENRE}+&with_genres=${99}`);
-  const Drama = useMovies(`${MOVIE_API_GENRE}+&with_genres=${18}`);
-  const Family = useMovies(`${MOVIE_API_GENRE}+&with_genres=${10751}`);
-  const Fantasy = useMovies(`${MOVIE_API_GENRE}+&with_genres=${14}`);
-  const History = useMovies(`${MOVIE_API_GENRE}+&with_genres=${36}`);
-  const Horror = useMovies(`${MOVIE_API_GENRE}+&with_genres=${27}`);
-  const Music = useMovies(`${MOVIE_API_GENRE}+&with_genres=${10402}`);
-  const Mystery = useMovies(`${MOVIE_API_GENRE}+&with_genres=${9648}`);
-  const Romance = useMovies(`${MOVIE_API_GENRE}+&with_genres=${10749}`);
-  const Science_Fiction = useMovies(`${MOVIE_API_GENRE}+&with_genres=${878}`);
-  const TV_Movie = useMovies(`${MOVIE_API_GENRE}+&with_genres=${10770}`);
-  const Thriller = useMovies(`${MOVIE_API_GENRE}+&with_genres=${53}`);
-  const War = useMovies(`${MOVIE_API_GENRE}+&with_genres=${10752}`);
-  const Western = useMovies(`${MOVIE_API_GENRE}+&with_genres=${37}`);
-
-  const moviesList = [
-    { category: "Now Playing", movie: nowPlayingMovies },
-    { category: "Popular", movie: popularMovies },
-    { category: "Top Rated", movie: topRatedMovies },
-    { category: "Upcoming", movie: upcomingMovies },
-    { category: "Action", movie: Action },
-    { category: "Adventure", movie: Adventure },
-    { category: "Animation", movie: Animation },
-    { category: "Crime", movie: Crime },
-    { category: "Comedy", movie: Comedy },
-    { category: "Documentary", movie: Documentary },
-    { category: "Drama", movie: Drama },
-    { category: "Family", movie: Family },
-    { category: "Fantasy", movie: Fantasy },
-    { category: "History", movie: History },
-    { category: "Horror", movie: Horror },
-    { category: "Music", movie: Music },
-    { category: "Mystery", movie: Mystery },
-    { category: "Romance", movie: Romance },
-    { category: "Science Fiction", movie: Science_Fiction },
-    { category: "TV Movies", movie: TV_Movie },
-    { category: "Thriller", movie: Thriller },
-    { category: "War", movie: War },
-    { category: "Western", movie: Western },
-  ];
-
-  moviesList.forEach((movie) => {
-    dispatch(
-      addMovies({
-        category: movie.category,
-        movies: movie.movie,
-      })
-    );
-  });
+  useMovies(MOVIE_API_NOW_PLAYING_MOVIES, "Now Playing");
+  useMovies(MOVIE_API_POPULAR_MOVIES, "Popular");
+  useMovies(MOVIE_API_TOP_RATED_MOVIES, "Top Rated");
+  useMovies(MOVIE_API_UPCOMING_MOVIES, "Upcoming");
+  useMovies(`${MOVIE_API_GENRE}+&with_genres=${28}`, "Action");
+  useMovies(`${MOVIE_API_GENRE}+&with_genres=${12}`, "Adventure");
+  useMovies(`${MOVIE_API_GENRE}+&with_genres=${16}`, "Animation");
+  useMovies(`${MOVIE_API_GENRE}+&with_genres=${80}`, "Crime");
+  useMovies(`${MOVIE_API_GENRE}+&with_genres=${35}`, "Comedy");
+  useMovies(`${MOVIE_API_GENRE}+&with_genres=${99}`, "Documentary");
+  useMovies(`${MOVIE_API_GENRE}+&with_genres=${18}`, "Drama");
+  useMovies(`${MOVIE_API_GENRE}+&with_genres=${10751}`, "Family");
+  useMovies(`${MOVIE_API_GENRE}+&with_genres=${14}`, "Fantasy");
+  useMovies(`${MOVIE_API_GENRE}+&with_genres=${36}`, "History");
+  useMovies(`${MOVIE_API_GENRE}+&with_genres=${27}`, "Horror");
+  useMovies(`${MOVIE_API_GENRE}+&with_genres=${10402}`, "Music");
+  useMovies(`${MOVIE_API_GENRE}+&with_genres=${9648}`, "Mystery");
+  useMovies(`${MOVIE_API_GENRE}+&with_genres=${10749}`, "Romance");
+  useMovies(`${MOVIE_API_GENRE}+&with_genres=${878}`, "Science Fiction");
+  useMovies(`${MOVIE_API_GENRE}+&with_genres=${10770}`, "TV Movies");
+  useMovies(`${MOVIE_API_GENRE}+&with_genres=${53}`, "Thriller");
+  useMovies(`${MOVIE_API_GENRE}+&with_genres=${10752}`, "War");
+  useMovies(`${MOVIE_API_GENRE}+&with_genres=${37}`, "Western");
 
   return (
-    <div>
+    <div className="min-h-screen bg-black">
       <Header />
-      {showGPTSearch ? (
+      {errorJio ? (
+        <div className="flex text-white min-h-screen justify-center items-center p-5 w-full">
+          <div className="md:w-1/2 flex flex-col items-center">
+            <div className="font-bold text-gray-100 text-3xl pb-3">
+              Oops! Something Went Wrong
+            </div>
+            <p className="font-medium">
+              We are unable to fetch the data right now. This could be due to a
+              network issue.
+              <br /> Don't worry, here are a few things you can try:
+            </p>
+            <ul className="list-disc">
+              <li>
+                <span className="text-red-500 pr-1">Refresh</span>the Page
+                <p>
+                  Sometimes a simple refresh does the trick! Please try
+                  refreshing the page once.
+                </p>
+              </li>
+              <li>
+                <span className="text-red-500">Check your Network</span>
+                <p>
+                  If you're using a{" "}
+                  <span className="text-red-500 text-lg font-semibold">
+                    JIO
+                  </span>{" "}
+                  connection, our system may have trouble fetching the data from
+                  our servers.
+                  <br /> Try switching to another network like Wi-Fi or a
+                  different mobile data provider.
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      ) : showGPTSearch ? (
         <GPT />
       ) : (
         <>

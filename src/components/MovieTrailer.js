@@ -6,6 +6,9 @@ import { addHeroMovieTrailerDetails } from "../store/moviesSlice";
 
 const MovieTrailer = () => {
   const dispatch = useDispatch();
+  const heroTrailerDetails = useSelector(
+    (store) => store?.movies?.heroMovieTrailer?.trailerDetails
+  );
   const movies = useSelector((store) => store.movies?.["Now Playing"]);
   const [trailerDetails, setTrailerDetails] = useState(null);
 
@@ -18,7 +21,9 @@ const MovieTrailer = () => {
 
   if (!trailerDetails) return null;
 
-  dispatch(addHeroMovieTrailerDetails(trailerDetails));
+  if (!heroTrailerDetails) {
+    dispatch(addHeroMovieTrailerDetails(trailerDetails));
+  }
 
   return (
     <div className="w-full bg-black">

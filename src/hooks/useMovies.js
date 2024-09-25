@@ -1,24 +1,32 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { MOVIE_API_OPTIONS } from "../utils/constants";
+import { useDispatch, useSelector } from "react-redux";
+import { addMovies, changeErrorState } from "../store/moviesSlice";
 
-const useMovies = (API) => {
-  const [movies, setMovies] = useState(null);
+const useMovies = (API, category) => {
+  const dispatch = useDispatch();
+  const moviesCategory = useSelector((store) => store?.movies?.[category]);
 
   const getMovies = async () => {
     try {
       const response = await fetch(API, MOVIE_API_OPTIONS);
       const json = await response.json();
-      setMovies(json.results);
+      dispatch(
+        addMovies({
+          category: category,
+          movies: json.results,
+        })
+      );
+      dispatch(changeErrorState(false));
     } catch (error) {
-      console.log("Error fecthing the Now Playing movies:", error);
+      console.log("Error Fetching movies:", error);
+      dispatch(changeErrorState(true));
     }
   };
 
   useEffect(() => {
-    getMovies();
+    !moviesCategory && getMovies();
   }, []);
-
-  return movies;
 };
 
 export default useMovies;

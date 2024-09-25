@@ -1,15 +1,12 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import useMovieTrailer from "../hooks/useMovieTrailer";
-import { addHeroMovieTrailerYoutubeKey } from "../store/moviesSlice";
 
 const VideoBackground = () => {
-  const dispatch = useDispatch();
   const trailerDetails = useSelector(
     (store) => store.movies?.heroMovieTrailer?.trailerDetails
   );
-  const youtubeKeyDetails = useMovieTrailer(trailerDetails?.id);
-  dispatch(addHeroMovieTrailerYoutubeKey(youtubeKeyDetails));
+  useMovieTrailer(trailerDetails?.id);
   const trailerVideo = useSelector(
     (store) => store.movies?.heroMovieTrailer?.youtubeKeyDetails
   );

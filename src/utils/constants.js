@@ -24,12 +24,16 @@ export const MOVIE_API_GENRE =
 
 export const MOVIE_IMAGE_PATH = "https://image.tmdb.org/t/p/original/";
 
+export const SEARCH_BY_MOVIE_NAME_FIRST_PART =
+  "https://api.themoviedb.org/3/search/movie?query=";
+
+export const SEARCH_BY_MOVIE_NAME_LAST_PART = "&include_adult=false&page=1";
+
 export const MOVIE_API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1Y2Y5M2I5YThmOWIwMDQyMGNiN2U0ZTNkMmNhODhhZSIsIm5iZiI6MTcyNjczMDc5MC4wOTYzNTIsInN1YiI6IjYzY2NmN2JlNmQ5N2U2MDBiNzRkYTc3ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.oOMyLDRt3I7jrPsBVGZ1ked1gffX7Qj5gjW_k_b-XHU",
+    Authorization: "Bearer " + process.env.REACT_APP_AUTHORIZATION_TOKEN,
   },
 };
 
@@ -38,3 +42,6 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "hindi", name: "Hindi" },
   { identifier: "spanish", name: "Spanish" },
 ];
+
+export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;
+export const GEMINI_KEY = process.env.REACT_APP_GEMINI_KEY;
