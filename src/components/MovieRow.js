@@ -74,7 +74,7 @@ const MovieRow = ({ title, movies }) => {
       <div className="group/MovieRow relative">
         <Slider {...settings}>
           {movies?.map((movie) => (
-            <div key={movie.id} className="pl-[12%]">
+            <div key={movie.id} className="pl-[12%] md:pl-0">
               <MovieCard movie={movie} imageType="backdrop" />
             </div>
           ))}
