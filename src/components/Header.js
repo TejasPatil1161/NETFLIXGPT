@@ -8,6 +8,8 @@ import { auth } from "../utils/firebase";
 import { addUser, removeUser } from "../store/userSlice";
 import { removeGPTMovieResult, toggleGPTSearchView } from "../store/GPTSlice";
 import { changeLanguage } from "../store/configSlice";
+import HomeIcon from "@mui/icons-material/Home";
+import SearchIcon from "@mui/icons-material/Search";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -64,18 +66,18 @@ const Header = () => {
   };
 
   return (
-    <div className="md:fixed w-full lg:px-12 md:px-8 px-4 py-6 bg-black md:bg-transparent md:bg-gradient-to-b md:from-black flex justify-between z-50">
+    <div className="fixed w-full lg:px-12 md:px-8 px-4 py-6 bg-black md:bg-transparent md:bg-gradient-to-b md:from-black flex justify-between z-50">
       <img
         src={NETFLIX_LOGO}
         alt="logo"
-        className={user ? "md:w-40 w-36" : "md:w-44 w-36"}
+        className={user ? "md:w-40 w-28" : "md:w-40 w-36"}
       />
       {user && (
         <div className="relative flex justify-center items-center">
           {showGPTSearch && (
             <div className="bg-black rounded">
               <select
-                className="p-2 bg-gray-500 bg-opacity-55 text-white rounded"
+                className="p-2 bg-gray-500 bg-opacity-55 text-white rounded text-sm md:text-base"
                 onChange={handleLanguageChange}
               >
                 {SUPPORTED_LANGUAGES.map((lang) => (
@@ -88,9 +90,19 @@ const Header = () => {
           )}
           <button
             onClick={handleGPTSeachView}
-            className="bg-red-600 text-white mx-6 px-3 p-2 rounded-lg hover:bg-red-700 active:scale-95 font-semibold"
+            className="bg-red-600 text-white mx-2 md:mx-6 px-3 p-2 rounded-lg hover:bg-red-700 active:scale-95 font-semibold"
           >
-            GPT Search
+            {showGPTSearch ? (
+              <p className="flex justify-center gap-1">
+                <HomeIcon />
+                <span className="hidden md:block">Home</span>
+              </p>
+            ) : (
+              <p className="flex justify-center gap-1">
+                <SearchIcon />
+                <span className="hidden md:block">GPT Search</span>
+              </p>
+            )}
           </button>
           <img
             src={user?.photoURL}

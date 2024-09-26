@@ -20,7 +20,7 @@ const NextArrow = ({ onClick }) => {
 const PrevArrow = ({ onClick }) => {
   return (
     <div
-      className="absolute cursor-pointer z-10 -left-10 text-white h-full justify-center items-center flex bg-black bg-opacity-50 rounded opacity-0 transition-opacity duration-300 group-hover/MovieRow:opacity-100"
+      className="absolute cursor-pointer z-10 left-0 md:-left-10 text-white h-full justify-center items-center flex bg-black bg-opacity-50 rounded opacity-0 transition-opacity duration-300 group-hover/MovieRow:opacity-100"
       onClick={onClick}
     >
       <ChevronLeftIcon fontSize="large" />
@@ -69,12 +69,12 @@ const MovieRow = ({ title, movies }) => {
   };
 
   return (
-    <div className="py-2 pl-12">
+    <div className="py-2 md:pl-12 pl-5">
       <h1 className="text-white font-bold text-2xl opacity-95 mb-4">{title}</h1>
       <div className="group/MovieRow relative">
         <Slider {...settings}>
           {movies?.map((movie) => (
-            <div key={movie.id}>
+            <div key={movie.id} className="pl-[12%]">
               <MovieCard movie={movie} imageType="backdrop" />
             </div>
           ))}

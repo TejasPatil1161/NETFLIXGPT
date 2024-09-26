@@ -98,17 +98,17 @@ const GPTSearchBar = () => {
   };
 
   return (
-    <div className="z-10 pt-[10%] w-full flex justify-center">
-      <div className="grid grid-cols-12 w-1/2 bg-black p-4 rounded">
+    <div className="z-10 pt-[45%] md:pt-[15%] w-full flex justify-center p-2 md:p-0">
+      <div className="grid grid-cols-12 w-full md:w-1/2 bg-black p-4 rounded">
         <input
           ref={searchText}
-          className="col-span-9 bg-gray-500 text-white placeholder:text-gray-300 p-2 rounded bg-opacity-45"
+          className="col-span-9 bg-gray-500 text-white placeholder:text-gray-300 p-2 rounded bg-opacity-45 placeholder:text-sm md:placeholder:text-base"
           type="text"
           placeholder={lang[language].GPTSearchPlaceholder}
         />
         <button
           onClick={handleGPTSearch}
-          className="col-span-3 bg-red-600 ml-2 rounded text-white"
+          className="col-span-3 bg-red-600 ml-2 rounded text-white text-sm md:text-base"
         >
           {lang[language].search}
         </button>

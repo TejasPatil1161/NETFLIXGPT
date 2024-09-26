@@ -56,17 +56,17 @@ const VideoContent = () => {
   const { Original_title, title, overview } = trailerVideo;
 
   return (
-    <div className="flex flex-col gap-1 p-16 pt-[18%] absolute text-white bg-gradient-to-r from-black aspect-video w-full bg-opacity-75">
-      <div className="text-5xl font-bold">
+    <div className="flex flex-col gap-1 p-5 md:p-16 pt-[52%] md:pt-[18%] absolute text-white bg-gradient-to-r from-black aspect-video w-full bg-opacity-75">
+      <div className="text-2xl md:text-5xl font-bold">
         {Original_title === title ? Original_title : title}
       </div>
-      <p className="w-2/5 py-3 font-semibold">{overview}</p>
+      <p className="hidden md:block md:w-2/5 py-3 font-semibold">{overview}</p>
       <div className="flex gap-3">
-        <button className="bg-white p-3 px-8 rounded-md font-bold text-black text-lg flex items-center gap-3 hover:opacity-80">
+        <button className="bg-white md:p-3 p-2 md:px-8 rounded-md font-bold text-black md:text-lg text-sm flex items-center gap-3 hover:opacity-80">
           {playIconSvg()}
           Play
         </button>
-        <button className="bg-gray-500 p-3 px-8 rounded-md font-bold text-lg hover:opacity-80">
+        <button className="hidden md:block bg-gray-500 md:p-3 p-2 md:px-8 rounded-md font-bold md:text-lg text-sm hover:opacity-80">
           More Info
         </button>
       </div>

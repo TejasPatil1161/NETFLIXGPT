@@ -12,6 +12,7 @@ import {
 } from "../utils/constants";
 import { useSelector } from "react-redux";
 import GPT from "./GPT";
+import Footer from "./Footer";
 
 const Browse = () => {
   const showGPTSearch = useSelector((store) => store.GPT.showGPTSearch);
@@ -42,11 +43,11 @@ const Browse = () => {
   useMovies(`${MOVIE_API_GENRE}+&with_genres=${37}`, "Western");
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen">
       <Header />
       {errorJio ? (
-        <div className="flex text-white min-h-screen justify-center items-center p-5 w-full">
-          <div className="md:w-1/2 flex flex-col items-center">
+        <div className="bg-black flex text-white min-h-screen justify-center items-center p-5 w-full">
+          <div className="md:w-1/2 flex flex-col items-center p-2">
             <div className="font-bold text-gray-100 text-3xl pb-3">
               Oops! Something Went Wrong
             </div>
@@ -87,6 +88,7 @@ const Browse = () => {
           <MovieList />
         </>
       )}
+      <Footer />
     </div>
   );
 };

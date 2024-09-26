@@ -8,7 +8,11 @@ const GPT = () => {
     <>
       <div className="min-h-screen relative flex flex-col">
         <div className="fixed inset-0 -z-20">
-          <img className="bg-cover" src={BG_IMAGE} alt="banner" />
+          <img
+            className="object-cover min-h-screen"
+            src={BG_IMAGE}
+            alt="banner"
+          />
         </div>
         <GPTSearchBar />
         <GPTMovieSuggestions />

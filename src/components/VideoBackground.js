@@ -12,7 +12,7 @@ const VideoBackground = () => {
   );
 
   return (
-    <div className="max-w-screen">
+    <div className="max-w-screen md:pt-0 pt-[22%]">
       <iframe
         className="w-full aspect-video"
         src={

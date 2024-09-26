@@ -30,7 +30,7 @@ const GPTMovieSuggestions = () => {
 
   return (
     <div className="z-10 flex flex-1 p-4 m-4">
-      <div className="p-4 flex flex-wrap w-full justify-center items-center">
+      <div className="p-4 flex flex-wrap w-full justify-center">
         {!userSearching ? (
           <div className="flex flex-col">
             <h1 className="text-white font-bold text-2xl">
