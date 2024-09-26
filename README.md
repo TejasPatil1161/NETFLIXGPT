@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Netflix GPT
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to Netflix GPT, a clone of Netflix that offers users a recognizable movie browsing interface. The application is integrated with Firebase for authentication and with TMDB to retrieve movie details. There's also a section dedicated to personalized movie recommendations, where users can enter any movie category related prompt based on their mood and receive recommendations tailored to them.
 
-## Available Scripts
+## Features
+- **TMDB Integration**: Fetch movie details directly from The Movie Database (TMDB).
+- **Firebase Authentication**: Secure user authentication using Firebase.
+- **Gemini Movie Recommendations**: Enter your prompt to receive personalized movie suggestions.
 
-In the project directory, you can run:
+## Preview of Project
+![Netflix Preview Login Page](./public/Assets/Login.png)
+![Netflix Preview Browse Page](./public/Assets/Browse.png)
+![Netflix Preview GPT Page](./public/Assets/GPT.png)
 
-### `npm start`
+## Demo
+Explore the live demo of Netflix GPT [here](https://netlfix-gemini.netlify.app/).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Usage
+1. Sign in using Firebase authentication to unlock personalized features.
+2. Browse movies and explore recommendations.
+3. Enter your movie based prompts to get personalized movie recommendations.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+To run this project locally, follow these steps:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Anshul-k/Netflix-GPT
 
-### `npm run build`
+2. Navigate to the project directory::
+   ```bash
+   cd netflix-gpt
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Install dependencies:
+    ```bash
+   npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Create a Firebase project and set up authentication.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. Configure Firebase:
+- Add your Firebase config details in src/utils/firebase.js.
 
-### `npm run eject`
+6. Create an .env file in the root directory and add your API keys.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+7. Start the development server:
+    ```bash
+   npm start
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+8. Open your web browser and explore the project locally at http://localhost:3000/.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Tech Stack
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **React**: Frontend framework for building user interfaces.
+- **TMDB**: Source for fetching movie details.
+- **Firebase**: Platform for authentication.
+- **Gemini**: Engine for personalized movie recommendations.
 
-## Learn More
+## Contribute
+If you'd like to contribute to this project, have suggestions for improvement, or wish to add more features, please feel free to submit issues or pull requests on [GitHub](https://github.com/Anshul-k/Netflix-GPT). Your contributions are valued! 🚀
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+This project is licensed under the MIT License.
