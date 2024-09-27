@@ -13,7 +13,7 @@ Welcome to Netflix GPT, a clone of Netflix that offers users a recognizable movi
 ![Netflix Preview GPT Page](./public/Assets/GPT.png)
 
 ## Demo
-Explore the live demo of Netflix GPT [here](https://netlfix-gemini.netlify.app/).
+Explore the live demo of Netflix GPT [here](https://netfliix-gemini.netlify.app/).
 
 ## Usage
 1. Sign in using Firebase authentication to unlock personalized features.
